@@ -43,6 +43,7 @@ odin-gui unix /tmp/ecran.sock [debug]
         "alim12v": true,
         "alim5vp": true,
         "tirette": true,
+        "otherRobot": true,
         "message": "Démarrage"
     }
 }
