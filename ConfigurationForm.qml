@@ -146,7 +146,7 @@ Page {
                     stateColor: getBooleanColor(RobotModel.lidar)
                 }
 
-                StateComponent {
+                /*StateComponent {
                     id: baliseState
                     anchors.right: parent.right
                     anchors.rightMargin: 5
@@ -154,7 +154,7 @@ Page {
                     anchors.leftMargin: 5
                     libelle: qsTr("Balise")
                     stateColor: getBooleanColor(RobotModel.balise)
-                }
+                }*/
 
                 StateComponent {
                     id: otherRobotState

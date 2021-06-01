@@ -16,10 +16,10 @@ ApplicationWindow {
 
     header: ToolBar {
         id: toolBar
-        contentHeight: toolButton.implicitHeight
+        contentHeight: closeButton.implicitHeight
         visible: !RobotModel.inMatch
 
-        ToolButton {
+        /*ToolButton {
             id: toolButton
             text: stackView.depth > 1 ? "\u25C0" : "\u2630"
             font.pixelSize: Qt.application.font.pixelSize * 1.6
@@ -43,7 +43,7 @@ ApplicationWindow {
                 console.log(stackView.currentItem)
                 stackView.push("CalibrationBaliseForm.qml")
             }
-        }
+        }*/
 
         Label {
             text: stackView.currentItem.title
@@ -51,6 +51,7 @@ ApplicationWindow {
         }
 
         ToolButton {
+            id: closeButton
             text: "\u274c"
             font.pixelSize: Qt.application.font.pixelSize * 1.6
             anchors.right: parent.right
