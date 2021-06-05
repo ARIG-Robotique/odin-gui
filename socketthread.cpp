@@ -83,6 +83,7 @@ void SocketThread::run() {
 
             if (model->getOtherRobot()) {
                 model->setTwoRobots(true);
+                model->setTeam(static_cast<RobotModel::Team>(data["team"].get<int>()));
             }
 
             result.status = RESPONSE_OK;
