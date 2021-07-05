@@ -26,11 +26,10 @@ private:
     Q_PROPERTY(bool startCalibration READ getStartCalibration WRITE setStartCalibration NOTIFY startCalibrationChanged)
     Q_PROPERTY(bool skipCalageBordure READ getSkipCalageBordure WRITE setSkipCalageBordure NOTIFY skipCalageBordureChanged)
     Q_PROPERTY(bool modeManuel READ getModeManuel WRITE setModeManuel NOTIFY modeManuelChanged)
-    Q_PROPERTY(bool doubleDepose READ getDoubleDepose WRITE setDoubleDepose NOTIFY doubleDeposeChanged)
     Q_PROPERTY(bool safeAvoidance READ getSafeAvoidance WRITE setSafeAvoidance NOTIFY safeAvoidanceChanged)
+    Q_PROPERTY(bool doubleDepose READ getDoubleDepose WRITE setDoubleDepose NOTIFY doubleDeposeChanged)
     Q_PROPERTY(bool deposePartielle READ getDeposePartielle WRITE setDeposePartielle NOTIFY deposePartielleChanged)
-    Q_PROPERTY(bool updatePhoto READ getUpdatePhoto WRITE setUpdatePhoto NOTIFY updatePhotoChanged)
-    Q_PROPERTY(bool etalonnageBalise READ getEtalonnageBalise WRITE setEtalonnageBalise NOTIFY etalonnageBaliseChanged)
+    Q_PROPERTY(bool echangeEcueil READ getEchangeEcueil WRITE setEchangeEcueil NOTIFY echangeEcueilChanged)
     Q_PROPERTY(bool twoRobots READ getTwoRobots WRITE setTwoRobots NOTIFY twoRobotsChanged)
 
     // RO
@@ -45,8 +44,6 @@ private:
     Q_PROPERTY(bool balise READ getBalise NOTIFY baliseChanged)
     Q_PROPERTY(int score READ getScore NOTIFY scoreChanged)
     Q_PROPERTY(QString message READ getMessage NOTIFY messageChanged)
-    Q_PROPERTY(QString photoMessage READ getPhotoMessage NOTIFY photoMessageChanged)
-    Q_PROPERTY(QString photo READ getPhoto NOTIFY photoChanged)
 
     static RobotModel* instance;
     RobotModel(QObject *parent = nullptr);
@@ -74,20 +71,17 @@ public:
     bool getModeManuel();
     void setModeManuel(bool value);
 
-    bool getDoubleDepose();
-    void setDoubleDepose(bool value);
-
     bool getSafeAvoidance();
     void setSafeAvoidance(bool value);
+
+    bool getDoubleDepose();
+    void setDoubleDepose(bool value);
 
     bool getDeposePartielle();
     void setDeposePartielle(bool value);
 
-    bool getUpdatePhoto();
-    void setUpdatePhoto(bool value);
-
-    bool getEtalonnageBalise();
-    void setEtalonnageBalise(bool value);
+    bool getEchangeEcueil();
+    void setEchangeEcueil(bool value);
 
     bool getTwoRobots();
     void setTwoRobots(bool value);
@@ -126,12 +120,6 @@ public:
     QString getMessage();
     void setMessage(QString value);
 
-    QString getPhotoMessage();
-    void setPhotoMessage(QString value);
-
-    QString getPhoto();
-    void setPhoto(QString value);
-
 signals:
     // RW
     void exitChanged(bool newValue);
@@ -140,11 +128,10 @@ signals:
     void startCalibrationChanged(bool newValue);
     void skipCalageBordureChanged(bool newValue);
     void modeManuelChanged(bool newValue);
-    void doubleDeposeChanged(bool newValue);
     void safeAvoidanceChanged(bool newValue);
+    void doubleDeposeChanged(bool newValue);
     void deposePartielleChanged(bool newValue);
-    void updatePhotoChanged(bool newValue);
-    void etalonnageBaliseChanged(bool newValue);
+    void echangeEcueilChanged(bool newValue);
     void twoRobotsChanged(bool newValue);
 
     // RO
@@ -159,8 +146,6 @@ signals:
     void scoreChanged(int newValue);
     void inMatchChanged(bool newValue);
     void tiretteChanged(bool newValue);
-    void photoMessageChanged(QString newValue);
-    void photoChanged(QString newValue);
 
 public slots:
 
@@ -168,12 +153,12 @@ private:
     // RW
     Team team;
     Strategy strategy;
-    bool exit, startCalibration, modeManuel, skipCalageBordure, doubleDepose, safeAvoidance, deposePartielle, updatePhoto, etalonnageBalise, twoRobots;
+    bool exit, startCalibration, modeManuel, skipCalageBordure, safeAvoidance, doubleDepose, deposePartielle, echangeEcueil, twoRobots;
 
     // RO
     int score;
     bool inMatch, au, alim12v, alim5vp, tirette, otherRobot, balise, i2c, lidar;
-    QString message, photoMessage, photo;
+    QString message;
 
 };
 

@@ -25,12 +25,11 @@ RobotModel::RobotModel(QObject *parent) : QObject(parent) {
     this->setStrategy(BASIC_NORD);
     this->setStartCalibration(false);
     this->setModeManuel(false);
-    this->setDoubleDepose(false);
     this->setSafeAvoidance(true);
+    this->setDoubleDepose(false);
     this->setDeposePartielle(false);
+    this->setEchangeEcueil(false);
     this->setSkipCalageBordure(false);
-    this->setUpdatePhoto(false);
-    this->setEtalonnageBalise(false);
     this->setTwoRobots(false);
 
     // RO
@@ -98,20 +97,20 @@ void RobotModel::setModeManuel(bool value) {
     emit modeManuelChanged(value);
 }
 
-bool RobotModel::getDoubleDepose() {
-    return this->doubleDepose;
-}
-void RobotModel::setDoubleDepose(bool value) {
-    this->doubleDepose = value;
-    emit doubleDeposeChanged(value);
-}
-
 bool RobotModel::getSafeAvoidance() {
     return this->safeAvoidance;
 }
 void RobotModel::setSafeAvoidance(bool value) {
     this->safeAvoidance = value;
     emit safeAvoidanceChanged(value);
+}
+
+bool RobotModel::getDoubleDepose() {
+    return this->doubleDepose;
+}
+void RobotModel::setDoubleDepose(bool value) {
+    this->doubleDepose = value;
+    emit doubleDeposeChanged(value);
 }
 
 bool RobotModel::getDeposePartielle() {
@@ -122,20 +121,12 @@ void RobotModel::setDeposePartielle(bool value) {
     emit deposePartielleChanged(value);
 }
 
-bool RobotModel::getUpdatePhoto() {
-    return this->updatePhoto;
+bool RobotModel::getEchangeEcueil() {
+    return this->echangeEcueil;
 }
-void RobotModel::setUpdatePhoto(bool value) {
-    this->updatePhoto = value;
-    emit updatePhotoChanged(value);
-}
-
-bool RobotModel::getEtalonnageBalise() {
-    return this->etalonnageBalise;
-}
-void RobotModel::setEtalonnageBalise(bool value) {
-    this->etalonnageBalise = value;
-    emit etalonnageBaliseChanged(value);
+void RobotModel::setEchangeEcueil(bool value) {
+    this->echangeEcueil = value;
+    emit echangeEcueilChanged(value);
 }
 
 bool RobotModel::getTwoRobots() {
@@ -235,20 +226,4 @@ QString RobotModel::getMessage() {
 void RobotModel::setMessage(QString value) {
     this->message = value;
     emit messageChanged(value);
-}
-
-QString RobotModel::getPhotoMessage() {
-    return this->photoMessage;
-}
-void RobotModel::setPhotoMessage(QString value) {
-    this->photoMessage = value;
-    emit photoMessageChanged(value);
-}
-
-QString RobotModel::getPhoto() {
-    return this->photo;
-}
-void RobotModel::setPhoto(QString value) {
-    this->photo = value;
-    emit photoChanged(value);
 }

@@ -55,10 +55,10 @@ void SocketThread::run() {
             result.data["strategy"] = model->getStrategy();
             result.data["modeManuel"] = model->getModeManuel();
             result.data["skipCalageBordure"] = model->getSkipCalageBordure();
-            result.data["updatePhoto"] = model->getUpdatePhoto();
-            result.data["doubleDepose"] = model->getDoubleDepose();
             result.data["safeAvoidance"] = model->getSafeAvoidance();
+            result.data["doubleDepose"] = model->getDoubleDepose();
             result.data["deposePartielle"] = model->getDeposePartielle();
+            result.data["echangeEcueil"] = model->getEchangeEcueil();
             result.data["twoRobots"] = model->getTwoRobots();
 
         } else if (query.action == ACTION_UPDATE_STATE) {
@@ -86,6 +86,7 @@ void SocketThread::run() {
                 model->setStrategy(static_cast<RobotModel::Strategy>(data["strategy"].get<int>()));
                 model->setDoubleDepose(data["doubleDepose"].get<bool>());
                 model->setDeposePartielle(data["deposePartielle"].get<bool>());
+                model->setEchangeEcueil(data["echangeEcueil"].get<bool>());
             }
 
             result.status = RESPONSE_OK;
