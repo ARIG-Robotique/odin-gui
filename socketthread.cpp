@@ -59,7 +59,6 @@ void SocketThread::run() {
             result.data["doubleDepose"] = model->getDoubleDepose();
             result.data["safeAvoidance"] = model->getSafeAvoidance();
             result.data["deposePartielle"] = model->getDeposePartielle();
-            result.data["etalonnageBalise"] = model->getEtalonnageBalise();
             result.data["twoRobots"] = model->getTwoRobots();
 
         } else if (query.action == ACTION_UPDATE_STATE) {
@@ -84,6 +83,9 @@ void SocketThread::run() {
             if (model->getOtherRobot()) {
                 model->setTwoRobots(true);
                 model->setTeam(static_cast<RobotModel::Team>(data["team"].get<int>()));
+                model->setStrategy(static_cast<RobotModel::Strategy>(data["strategy"].get<int>()));
+                model->setDoubleDepose(data["doubleDepose"].get<bool>());
+                model->setDeposePartielle(data["deposePartielle"].get<bool>());
             }
 
             result.status = RESPONSE_OK;

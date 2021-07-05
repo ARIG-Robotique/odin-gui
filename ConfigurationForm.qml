@@ -342,6 +342,7 @@ Page {
                     anchors.left: parent.left
                     anchors.leftMargin: 0
                     checked: RobotModel.strategy === RobotModel.BASIC_NORD
+                    enabled: !RobotModel.otherRobot
                     text: qsTr("Basic - Nord")
                     font.pointSize: 16
                     onClicked: RobotModel.strategy = RobotModel.BASIC_NORD
@@ -352,6 +353,7 @@ Page {
                     anchors.left: parent.left
                     anchors.leftMargin: 0
                     checked: RobotModel.strategy === RobotModel.BASIC_SUD
+                    enabled: !RobotModel.otherRobot
                     text: qsTr("Basic - Sud")
                     font.pointSize: 16
                     onClicked: RobotModel.strategy = RobotModel.BASIC_SUD
@@ -362,6 +364,7 @@ Page {
                     anchors.left: parent.left
                     anchors.leftMargin: 0
                     checked: RobotModel.strategy === RobotModel.AGGRESSIVE
+                    enabled: !RobotModel.otherRobot
                     text: qsTr("Aggressive")
                     font.pointSize: 16
                     onClicked: RobotModel.strategy = RobotModel.AGGRESSIVE
@@ -386,6 +389,7 @@ Page {
                 Switch {
                     id: configDblDeposeGdChenal
                     text: qsTr("2 déposes gd chenal")
+                    enabled: !RobotModel.otherRobot
                     checked: RobotModel.doubleDepose
                     anchors.right: parent.right
                     anchors.rightMargin: 0
@@ -397,6 +401,7 @@ Page {
                 Switch {
                     id: configDeposePartielle
                     text: qsTr("Deposes partielle gd chenal")
+                    enabled: !RobotModel.otherRobot
                     checked: RobotModel.deposePartielle
                     anchors.right: parent.right
                     anchors.rightMargin: 0
