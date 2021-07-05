@@ -19,32 +19,6 @@ ApplicationWindow {
         contentHeight: closeButton.implicitHeight
         visible: !RobotModel.inMatch
 
-        /*ToolButton {
-            id: toolButton
-            text: stackView.depth > 1 ? "\u25C0" : "\u2630"
-            font.pixelSize: Qt.application.font.pixelSize * 1.6
-            onClicked: {
-                if (stackView.depth > 1) {
-                    stackView.pop()
-                } else {
-                    drawer.open()
-                }
-            }
-        }
-
-        ToolButton {
-            id: baliseButton
-            text: "Calibration"
-            anchors.left: toolButton.left
-            anchors.leftMargin: 50
-            font.pixelSize: Qt.application.font.pixelSize * 1.6
-            enabled: RobotModel.balise && stackView.currentItem.title !== "Calibration balise (Sauron)"
-            onClicked: {
-                console.log(stackView.currentItem)
-                stackView.push("CalibrationBaliseForm.qml")
-            }
-        }*/
-
         Label {
             text: stackView.currentItem.title
             anchors.centerIn: parent
@@ -56,26 +30,6 @@ ApplicationWindow {
             font.pixelSize: Qt.application.font.pixelSize * 1.6
             anchors.right: parent.right
             onClicked: exitConfirmation.open()
-        }
-    }
-
-    Drawer {
-        id: drawer
-        width: window.width * 0.2
-        height: window.height
-
-        Column {
-            anchors.fill: parent
-
-            ItemDelegate {
-                text: qsTr("Calibration Balise")
-                width: parent.width
-                enabled: RobotModel.balise
-                onClicked: {
-                    stackView.push("CalibrationBaliseForm.qml")
-                    drawer.close()
-                }
-            }
         }
     }
 
