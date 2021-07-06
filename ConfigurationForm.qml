@@ -391,7 +391,6 @@ Page {
                 Switch {
                     id: configDblDeposeGdChenal
                     text: qsTr("2 déposes gd chenal")
-                    enabled: !RobotModel.otherRobot
                     checked: RobotModel.doubleDepose
                     anchors.right: parent.right
                     anchors.rightMargin: 0
@@ -403,7 +402,6 @@ Page {
                 Switch {
                     id: configDeposePartielle
                     text: qsTr("Dépose partielle gd chenal")
-                    enabled: !RobotModel.otherRobot
                     checked: RobotModel.deposePartielle
                     anchors.right: parent.right
                     anchors.rightMargin: 0
@@ -415,7 +413,6 @@ Page {
                 Switch {
                     id: configEchangeEcueil
                     text: qsTr("Échange ecueil")
-                    enabled: !RobotModel.otherRobot
                     checked: RobotModel.echangeEcueil
                     anchors.right: parent.right
                     anchors.rightMargin: 0
