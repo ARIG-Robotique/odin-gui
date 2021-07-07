@@ -366,6 +366,7 @@ Page {
                     anchors.left: parent.left
                     anchors.leftMargin: 0
                     checked: RobotModel.strategy === RobotModel.FINALE
+                    enabled: !RobotModel.otherRobot
                     text: qsTr("Finale")
                     font.pointSize: 16
                     onClicked: RobotModel.strategy = RobotModel.FINALE
