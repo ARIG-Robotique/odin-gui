@@ -56,7 +56,6 @@ void SocketThread::run() {
             result.data["modeManuel"] = model->getModeManuel();
             result.data["skipCalageBordure"] = model->getSkipCalageBordure();
             result.data["safeAvoidance"] = model->getSafeAvoidance();
-            result.data["doubleDepose"] = model->getDoubleDepose();
             result.data["deposePartielle"] = model->getDeposePartielle();
             result.data["echangeEcueil"] = model->getEchangeEcueil();
             result.data["twoRobots"] = model->getTwoRobots();
@@ -84,7 +83,6 @@ void SocketThread::run() {
                 model->setTwoRobots(true);
                 model->setTeam(static_cast<RobotModel::Team>(data["team"].get<int>()));
                 model->setStrategy(static_cast<RobotModel::Strategy>(data["strategy"].get<int>()));
-                model->setDoubleDepose(data["doubleDepose"].get<bool>());
                 model->setDeposePartielle(data["deposePartielle"].get<bool>());
                 model->setEchangeEcueil(data["echangeEcueil"].get<bool>());
             }

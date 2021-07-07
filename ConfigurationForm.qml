@@ -146,16 +146,6 @@ Page {
                     stateColor: getBooleanColor(RobotModel.lidar)
                 }
 
-                /*StateComponent {
-                    id: baliseState
-                    anchors.right: parent.right
-                    anchors.rightMargin: 5
-                    anchors.left: parent.left
-                    anchors.leftMargin: 5
-                    libelle: qsTr("Balise")
-                    stateColor: getBooleanColor(RobotModel.balise)
-                }*/
-
                 StateComponent {
                     id: otherRobotState
                     anchors.right: parent.right
@@ -376,22 +366,11 @@ Page {
             Column {
                 id: configMatch
                 width: 235
-                spacing: 0
-
-                Switch {
-                    id: configDblDeposeGdChenal
-                    text: qsTr("2 déposes gd chenal")
-                    checked: RobotModel.doubleDepose
-                    anchors.right: parent.right
-                    anchors.rightMargin: 0
-                    anchors.left: parent.left
-                    anchors.leftMargin: 0
-                    onClicked: RobotModel.doubleDepose = configDblDeposeGdChenal.checked
-                }
+                spacing: 10
 
                 Switch {
                     id: configDeposePartielle
-                    text: qsTr("Dépose partielle gd chenal")
+                    text: qsTr("Dépose partielle")
                     checked: RobotModel.deposePartielle
                     anchors.right: parent.right
                     anchors.rightMargin: 0
@@ -426,7 +405,7 @@ Page {
             Column {
                 id: configDebug
                 width: 200
-                spacing: 0
+                spacing: 10
 
                 Switch {
                     id: configTwoRobots
