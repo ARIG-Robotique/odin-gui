@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Controls.Material 2.12
 import org.arig.robotmodel 1.0
+import QtQuick.Layouts 1.1
 
 Page {
     id: page
@@ -199,6 +200,7 @@ Page {
                     anchors.left: parent.left
                     anchors.leftMargin: 5
                     libelle: qsTr("Tirette")
+                    visible: !RobotModel.otherRobot
                     stateColor: getBooleanColor(RobotModel.tirette)
                 }
             }
@@ -217,12 +219,7 @@ Page {
         anchors.leftMargin: 5
 
 
-        Rectangle {
-            id: rectColorTeam
-            color: getTeamColor(RobotModel.team)
-            radius: 5
-            border.color: "#00000000"
-            border.width: 1
+        RowLayout {
             anchors.bottom: buttonCalibration.top
             anchors.bottomMargin: 0
             anchors.top: parent.top
@@ -231,26 +228,39 @@ Page {
             anchors.leftMargin: 0
             anchors.right: parent.right
             anchors.rightMargin: 0
-        }
 
-        MouseArea {
-            property bool checked: true
+            Rectangle {
+                id: rectColorTeamBleu
+                color: getTeamColor(RobotModel.BLEU)
+                opacity: RobotModel.team == RobotModel.BLEU ? 1 : 0.2
+                radius: 5
+                Layout.fillWidth: true
+                Layout.fillHeight: true
 
-            enabled: !RobotModel.startCalibration
+                MouseArea {
+                    anchors.fill: parent
+                    enabled: !RobotModel.startCalibration && !RobotModel.otherRobot
+                    onClicked: {
+                        RobotModel.team = RobotModel.BLEU
+                    }
+                }
+            }
 
-            id: areaSelectColor
-            anchors.bottom: buttonCalibration.top
-            anchors.bottomMargin: 0
-            anchors.left: parent.left
-            anchors.leftMargin: 0
-            anchors.right: parent.right
-            anchors.rightMargin: 0
-            anchors.top: parent.top
-            anchors.topMargin: 0
+            Rectangle {
+                id: rectColorTeamJaune
+                color: getTeamColor(RobotModel.JAUNE)
+                opacity: RobotModel.team == RobotModel.JAUNE ? 1 : 0.2
+                radius: 5
+                Layout.fillWidth: true
+                Layout.fillHeight: true
 
-            onClicked: {
-                areaSelectColor.checked = !areaSelectColor.checked;
-                RobotModel.team = areaSelectColor.checked ? RobotModel.BLEU : RobotModel.JAUNE;
+                MouseArea {
+                    anchors.fill: parent
+                    enabled: !RobotModel.startCalibration && !RobotModel.otherRobot
+                    onClicked: {
+                        RobotModel.team = RobotModel.JAUNE
+                    }
+                }
             }
         }
 
@@ -262,7 +272,7 @@ Page {
             width: 300
             height: 24
             text: qsTr("Taper ici pour choisir l'équipe")
-            visible: RobotModel.team == RobotModel.UNKNOWN
+            visible: RobotModel.team == RobotModel.UNKNOWN && !RobotModel.otherRobot
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             font.pointSize: 16
@@ -271,7 +281,7 @@ Page {
         Button {
             id: buttonCalibration
             y: 277
-            enabled: RobotModel.au && RobotModel.team != RobotModel.UNKNOWN && !RobotModel.startCalibration
+            enabled: RobotModel.au && RobotModel.team != RobotModel.UNKNOWN && !RobotModel.startCalibration && !RobotModel.otherRobot
             text: qsTr("Lancer le calage bordure")
             hoverEnabled: false
             highlighted: false
@@ -334,7 +344,6 @@ Page {
                     anchors.left: parent.left
                     anchors.leftMargin: 0
                     checked: RobotModel.strategy === RobotModel.BASIC
-                    enabled: !RobotModel.otherRobot
                     text: qsTr("Basic")
                     font.pointSize: 16
                     onClicked: RobotModel.strategy = RobotModel.BASIC
@@ -345,7 +354,6 @@ Page {
                     anchors.left: parent.left
                     anchors.leftMargin: 0
                     checked: RobotModel.strategy === RobotModel.AGGRESSIVE
-                    enabled: !RobotModel.otherRobot
                     text: qsTr("Aggressive")
                     font.pointSize: 16
                     onClicked: RobotModel.strategy = RobotModel.AGGRESSIVE
@@ -356,7 +364,6 @@ Page {
                     anchors.left: parent.left
                     anchors.leftMargin: 0
                     checked: RobotModel.strategy === RobotModel.FINALE
-                    enabled: !RobotModel.otherRobot
                     text: qsTr("Finale")
                     font.pointSize: 16
                     onClicked: RobotModel.strategy = RobotModel.FINALE
